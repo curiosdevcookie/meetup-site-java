@@ -198,9 +198,9 @@ hr {
 
 /* Container Query: accent bar on wider cards */
 @container meetup-card (min-width: 50rem) {
-    .meetup-card {
+    /* .meetup-card {
         border-top: 0.6rem solid var(--brand-inspired-gold);
-    }
+    } */
 
     .meetup-card h3 {
         font-size: 3.2rem;
@@ -219,7 +219,7 @@ hr {
 }
 
 .meetup-list li {
-    border-bottom: 0.1rem solid #d0d0d0;
+    border-bottom: 0.2rem solid var(--text-main);
 }
 
 .meetup-list li:last-child {

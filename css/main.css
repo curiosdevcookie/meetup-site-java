@@ -6,9 +6,9 @@
     font-size: 62.5%;
 
     /* Design Tokens */
-    --brand-inspired-gold: #D8B451;
-    --brand-inspired-gold-dark: #5382a1;
-    --text-main: #0a0a0a;
+    --brand-inspired-gold: #e0b43b;
+    --brand-java-blue-dark: #5382a1;
+    --text-main: #3a3a3a;
     --text-muted: #555555;
     --bg-main: #ffffff;
 
@@ -56,7 +56,7 @@ body {
     background: #ffffff;
     border-radius: 1.2rem;
     overflow: hidden;
-    max-width: 140rem;
+    max-width: 120rem;
     margin: 0 auto;
 }
 
@@ -105,7 +105,7 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--brand-inspired-gold-dark);
+    color: var(--brand-java-blue-dark);
 }
 
 nav a:focus-visible {
@@ -175,7 +175,7 @@ hr {
 
 .meetup-card time {
     font-weight: 900;
-    color: var(--brand-inspired-gold-dark);
+    color: var(--brand-java-blue-dark);
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -238,7 +238,7 @@ hr {
 
 .meetup-list time {
     font-weight: 900;
-    color: var(--brand-inspired-gold-dark);
+    color: var(--brand-java-blue-dark);
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;

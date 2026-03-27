@@ -20,10 +20,10 @@ const formatDate = dateStr => new Date(dateStr + 'T00:00:00').toLocaleDateString
 document.getElementById('upcoming-container').innerHTML = upcoming.map(e => `
     <div class="meetup-container">
         <article class="meetup-card">
-            <div class="card-header">
+            <header>
                 <time datetime="${e.date}">${formatDate(e.date)}</time>
                 <h3>${e.title}</h3>
-            </div>
+            </header>
             <p>${e.time}</p>
         </article>
     </div>

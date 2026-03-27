@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java User Group - Meetup-site-java</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="page-sheet">
+    <header>
+        <nav class="container" aria-label="Main navigation">
+            <a href="/" class="logo">JUG Java</a>
+            <ul>
+                <li><a href="#upcoming">Upcoming</a></li>
+                <li><a href="#past">Archive</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" id="main-content">
+        <section id="upcoming">
+            <h2>Upcoming Meetups</h2>
+            <div class="meetup-grid" id="upcoming-container" aria-live="polite"></div>
+        </section>
+
+        <hr>
+
+        <section id="past">
+            <h2>Past Meetups</h2>
+            <ul class="meetup-list" id="past-container" aria-live="polite"></ul>
+        </section>
+    </main>
+
+    <footer class="container">
+        <p>Inspired Socials</p>
+    </footer>
+
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

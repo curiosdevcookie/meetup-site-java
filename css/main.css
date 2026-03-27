@@ -1,0 +1,330 @@
+
+:root {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 62.5%;
+
+    /* Design Tokens */
+    --brand-inspired-gold: #D8B451;
+    --brand-inspired-gold-dark: #5382a1;
+    --text-main: #0a0a0a;
+    --text-muted: #555555;
+    --bg-main: #ffffff;
+
+    /* Spacing Scale */
+    --space-xs: 0.8rem;
+    --space-sm: 1.6rem;
+    --space-md: 3.2rem;
+    --space-lg: 6.4rem;
+    --space-xl: 9.6rem;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: var(--space-sm);
+    background: var(--text-main);
+    color: white;
+    padding: var(--space-xs) var(--space-sm);
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 200;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+body {
+    margin: 0;
+    padding: var(--space-md);
+    min-height: 100vh;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--text-main);
+    background-color: var(--brand-inspired-gold);
+}
+
+.page-sheet {
+    background: #ffffff;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    max-width: 140rem;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+/* Navigation */
+header {
+    border-bottom: 0.4rem solid var(--text-main);
+    padding: var(--space-md) 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-md);
+}
+
+nav .logo {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--space-md);
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+nav a:hover {
+    color: var(--brand-inspired-gold-dark);
+}
+
+nav a:focus-visible {
+    outline: 0.3rem solid var(--brand-inspired-gold);
+    outline-offset: 0.4rem;
+    border-radius: 0.2rem;
+}
+
+/* Main Content */
+main {
+    padding: var(--space-xl) var(--space-md);
+}
+
+section {
+    margin-bottom: var(--space-xl);
+}
+
+section h2 {
+    font-size: 5.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin: 0 0 var(--space-lg) 0;
+    border-bottom: 0.4rem solid var(--text-main);
+    padding-bottom: var(--space-md);
+}
+
+hr {
+    border: none;
+    border-top: 0.2rem solid var(--text-main);
+    margin: var(--space-xl) 0;
+}
+
+/* Grid System with Container Queries */
+.meetup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(34rem, 1fr));
+    gap: 0;
+    border: 0.2rem solid var(--text-main);
+}
+
+.meetup-container {
+    container-type: inline-size;
+    container-name: meetup-card;
+}
+
+/* Meetup Cards */
+.meetup-card {
+    background: var(--bg-main);
+    border-right: 0.2rem solid var(--text-main);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.meetup-container:last-child .meetup-card {
+    border-right: none;
+}
+
+.meetup-card header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.meetup-card time {
+    font-weight: 900;
+    color: var(--brand-inspired-gold-dark);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-variant-numeric: tabular-nums;
+}
+
+.meetup-card h3 {
+    font-size: 2.4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.meetup-card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 1.6rem;
+}
+
+/* Container Query: accent bar on wider cards */
+@container meetup-card (min-width: 50rem) {
+    .meetup-card {
+        border-top: 0.6rem solid var(--brand-inspired-gold);
+    }
+
+    .meetup-card h3 {
+        font-size: 3.2rem;
+    }
+}
+
+/* Past Meetups List */
+.meetup-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(34rem, 1fr));
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border: 0.2rem solid var(--text-main);
+}
+
+.meetup-list li {
+    border-bottom: 0.1rem solid #d0d0d0;
+}
+
+.meetup-list li:last-child {
+    border-bottom: none;
+}
+
+.meetup-list article {
+    padding: var(--space-md);
+    border-right: 0.2rem solid var(--text-main);
+}
+
+.meetup-list li:nth-child(even) article,
+.meetup-list li:last-child article {
+    border-right: none;
+}
+
+.meetup-list time {
+    font-weight: 900;
+    color: var(--brand-inspired-gold-dark);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: var(--space-xs);
+}
+
+.meetup-list h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.meetup-list p {
+    margin: var(--space-xs) 0 0 0;
+    color: var(--text-muted);
+    font-size: 1.6rem;
+}
+
+/* Footer */
+footer {
+    border-top: 0.4rem solid var(--text-main);
+    text-align: left;
+    padding: var(--space-md);
+    color: var(--text-muted);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* Responsive */
+@media (max-width: 64rem) {
+    section h2 {
+        font-size: 4rem;
+    }
+
+    .meetup-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .meetup-container .meetup-card {
+        border-right: none;
+        border-bottom: 0.2rem solid var(--text-main);
+    }
+
+    .meetup-container:last-child .meetup-card {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 48rem) {
+    body {
+        padding: var(--space-sm);
+    }
+
+    main {
+        padding: var(--space-lg) var(--space-sm);
+    }
+
+    .container {
+        padding: 0 var(--space-sm);
+    }
+
+    section h2 {
+        font-size: 3.2rem;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+    }
+
+    .meetup-list {
+        grid-template-columns: 1fr;
+    }
+
+    .meetup-list article {
+        border-right: none;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    nav a {
+        transition: color 0.15s ease;
+    }
+}

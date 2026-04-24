@@ -18,6 +18,11 @@
     --space-md: 3.2rem;
     --space-lg: 6.4rem;
     --space-xl: 9.6rem;
+
+    /* Font Sizes */
+     --font-size-sm: 1.8rem;
+     --font-size-lg: 2.4rem;
+     --font-size-xl: 4rem;
 }
 
 *, *::before, *::after {
@@ -43,7 +48,7 @@ body {
     margin: 0;
     padding: var(--space-md);
     min-height: 100vh;
-    font-size: 1.8rem;
+    font-size: var(--font-size-sm);
     line-height: 1.6;
     font-family: system-ui, -apple-system, sans-serif;
     color: var(--text-main);
@@ -80,7 +85,7 @@ nav {
     gap: var(--space-md);
 
     .logo {
-        font-size: 2.4rem;
+        font-size: var(--font-size-lg);
         font-weight: 900;
         color: var(--text-main);
         text-transform: uppercase;
@@ -99,7 +104,7 @@ nav {
         color: var(--text-main);
         text-decoration: none;
         font-weight: 700;
-        font-size: 1.4rem;
+        font-size: var(--font-size-lg);
         text-transform: uppercase;
         letter-spacing: 0.1em;
 
@@ -134,7 +139,7 @@ section {
     margin-bottom: var(--space-xl);
 
     h2 {
-        font-size: 5.6rem;
+        font-size: var(--font-size-xl);
         font-weight: 900;
         text-transform: uppercase;
         letter-spacing: -0.03em;
@@ -143,21 +148,18 @@ section {
         border-bottom: 0.4rem solid var(--text-main);
         padding-bottom: var(--space-md);
 
-        @media (max-width: 48rem) { font-size: 3.2rem; }
+        @media (max-width: 48rem) { font-size: var(--font-size-lg); }
     }
 }
 
-hr {
-    border: none;
-    border-top: 0.2rem solid var(--text-main);
-    margin: var(--space-xl) 0;
-}
 
 /* Grid & Cards */
 .meetup-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(34rem, 1fr));
     gap: var(--space-md);
+    container-type: inline-size;
+    container-name: meetup-grid;
 }
 
 .meetup-card {
@@ -174,25 +176,25 @@ hr {
     time {
         font-weight: 900;
         color: var(--brand-java-blue-dark);
-        font-size: 1.2rem;
+        font-size: var(--font-size-sm);
         text-transform: uppercase;
         letter-spacing: 0.12em;
         font-variant-numeric: tabular-nums;
     }
 
     h3 {
-        font-size: 2.4rem;
+        font-size: var(--font-size-lg);
         font-weight: 900;
         line-height: 1.1;
         margin: 0;
         letter-spacing: -0.02em;
 
-        @container (min-width: 50rem) { font-size: 4rem; }
+        @container meetup-grid (max-width: 71rem) { font-size: var(--font-size-xl); }
     }
 
     p {
         margin: 0;
         color: var(--text-muted);
-        font-size: 1.6rem;
+        font-size: var(--font-size-sm);
     }
 }

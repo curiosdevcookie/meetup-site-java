@@ -12,7 +12,7 @@
     <div class="page-sheet">
     <header>
         <nav class="container" aria-label="Main navigation">
-            <h1>JUG Colonia</h1>
+            <a href="/" class="logo">JUG Colonia</a>
             <ul>
                 <li><a href="#upcoming">Upcoming</a></li>
                 <li><a href="#past">Archive</a></li>
@@ -21,21 +21,20 @@
     </header>
 
     <main class="container" id="main-content">
-        <section id="upcoming">
-            <h2>Upcoming Meetups</h2>
+        <section id="upcoming" aria-labelledby="upcoming-heading">
+            <h2 id="upcoming-heading">Upcoming Meetups</h2>
             <div class="meetup-grid" id="upcoming-container" aria-live="polite"></div>
         </section>
 
-        <hr>
 
-        <section id="past">
-            <h2>Past Meetups</h2>
+        <section id="past" aria-labelledby="past-heading">
+            <h2 id="past-heading">Past Meetups</h2>
             <div class="meetup-grid" id="past-container" aria-live="polite"></div>
         </section>
     </main>
 
     <footer class="container">
-        <p>Inspired Socials</p>
+        <small>Inspired Socials</small>
     </footer>
 
     </div>

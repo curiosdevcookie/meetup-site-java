@@ -1,11 +1,11 @@
 
 const events = [
-    { date: '2025-08-18', title: 'Java Meetup Cologne 25/03', time: '18:00–20:00' },
-    { date: '2025-11-20', title: 'Java Meetup Cologne 25/04', time: '18:00–21:00' },
-    { date: '2026-02-19', title: 'Java Meetup Cologne 26/01', time: '18:00–20:00' },
-    { date: '2026-05-28', title: 'Java Meetup Cologne 26/02', time: '18:00–20:00' },
-    { date: '2026-08-20', title: 'Java Meetup Cologne 26/03', time: '18:00–20:00' },
-    { date: '2026-11-19', title: 'Java Meetup Cologne 26/04', time: '18:00–20:00' },
+    { date: '2025-08-18', time: '18:00–20:00', title: 'What’s in it for me? Java from version 8 to 21.', speaker: 'Christian Baer' },
+    { date: '2025-11-20', time: '18:00–20:00', title: 'Insights into JUnit', speaker: 'Christian Stein' },
+    { date: '2026-02-19', time: '18:00–20:00', title: 'All you need about Maven 4', speaker: 'Matthias Bünger' },
+    { date: '2026-05-28', time: '18:00–20:00', title: 'Scala Type System', speaker: 'Michael Bauer' },
+    { date: '2026-08-20', time: '18:00–20:00', title: 'Java Meetup Cologne 26/03', speaker: 'TBA' },
+    { date: '2026-11-19', time: '18:00–20:00', title: 'Java Meetup Cologne 26/04', speaker: 'TBA' }
 ];
 
 const today = new Date().toISOString().split('T')[0];
@@ -18,23 +18,19 @@ const formatDate = dateStr => new Date(dateStr + 'T00:00:00').toLocaleDateString
 });
 
 document.getElementById('upcoming-container').innerHTML = upcoming.map(e => `
-    <div class="meetup-container">
         <article class="meetup-card">
-            <header>
-                <time datetime="${e.date}">${formatDate(e.date)}</time>
-                <h3>${e.title}</h3>
-            </header>
+            <time datetime="${e.date}">${formatDate(e.date)}</time>
             <p>${e.time}</p>
+            <h3>${e.title}</h3>
+            <p>${e.speaker}</p>
         </article>
-    </div>
 `).join('') || '<p>No upcoming events.</p>';
 
 document.getElementById('past-container').innerHTML = past.map(e => `
-    <li>
-        <article>
+        <article class="meetup-card">
             <time datetime="${e.date}">${formatDate(e.date)}</time>
-            <h3>${e.title}</h3>
             <p>${e.time}</p>
+            <h3>${e.title}</h3>
+            <p>${e.speaker}</p>
         </article>
-    </li>
 `).join('');

@@ -6,13 +6,16 @@
     font-size: 62.5%;
 
     /* Design Tokens */
+    /* Brand Colors Java, cf. https://www.oracle.com/a/ocom/docs/java-licensing-logo-guidelines-1908204.pdf */
+    --brand-java-blue-dark: #007396;
+    --brand-java-orange: #ED8B00;
     --brand-inspired-gold: #e0b43b;
-    --brand-java-blue-dark: #5382a1;
     --text-main: #3a3a3a;
     --text-muted: #555555;
     --bg-main: #ffffff;
 
     /* Spacing Scale */
+    --space-xxs: 0.1rem;
     --space-xs: 0.8rem;
     --space-sm: 1.6rem;
     --space-md: 3.2rem;
@@ -178,7 +181,7 @@ section {
         color: var(--brand-java-blue-dark);
         font-size: var(--font-size-sm);
         text-transform: uppercase;
-        letter-spacing: 0.12em;
+        letter-spacing: calc(-1 * var(--space-xxs));
         font-variant-numeric: tabular-nums;
     }
 
@@ -187,7 +190,7 @@ section {
         font-weight: 900;
         line-height: 1.1;
         margin: 0;
-        letter-spacing: -0.02em;
+        letter-spacing: calc(-1 * var(--space-xxs));
 
         @container meetup-grid (max-width: 71rem) { font-size: var(--font-size-xl); }
     }

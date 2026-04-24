@@ -35,10 +35,8 @@
     font-weight: 700;
     text-decoration: none;
     z-index: 200;
-}
 
-.skip-link:focus {
-    top: 0;
+    &:focus { top: 0; }
 }
 
 body {
@@ -50,10 +48,12 @@ body {
     font-family: system-ui, -apple-system, sans-serif;
     color: var(--text-main);
     background-color: var(--brand-inspired-gold);
+
+    @media (max-width: 48rem) { padding: var(--space-sm); }
 }
 
 .page-sheet {
-    background: #ffffff;
+    background: var(--bg-main);
     border-radius: 1.2rem;
     overflow: hidden;
     max-width: 120rem;
@@ -64,6 +64,8 @@ body {
     max-width: 120rem;
     margin: 0 auto;
     padding: 0 var(--space-md);
+
+    @media (max-width: 48rem) { padding: 0 var(--space-sm); }
 }
 
 /* Navigation */
@@ -76,61 +78,73 @@ nav {
     justify-content: space-between;
     align-items: baseline;
     gap: var(--space-md);
-}
 
-nav .logo {
-    font-size: 2.4rem;
-    font-weight: 900;
-    color: var(--text-main);
-    text-transform: uppercase;
-    letter-spacing: -0.05em;
-}
+    .logo {
+        font-size: 2.4rem;
+        font-weight: 900;
+        color: var(--text-main);
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+    }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: var(--space-md);
-    margin: 0;
-    padding: 0;
-}
+    ul {
+        display: flex;
+        list-style: none;
+        gap: var(--space-md);
+        margin: 0;
+        padding: 0;
+    }
 
-nav a {
-    color: var(--text-main);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
+    a {
+        color: var(--text-main);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
 
-nav a:hover {
-    color: var(--brand-java-blue-dark);
-}
+        &:hover { color: var(--brand-java-blue-dark); }
 
-nav a:focus-visible {
-    outline: 0.3rem solid var(--brand-inspired-gold);
-    outline-offset: 0.4rem;
-    border-radius: 0.2rem;
+        &:focus-visible {
+            outline: 0.3rem solid var(--brand-inspired-gold);
+            outline-offset: 0.4rem;
+            border-radius: 0.2rem;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            transition: color 0.15s ease;
+        }
+    }
+
+    @media (max-width: 48rem) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+    }
 }
 
 /* Main Content */
 main {
     padding: var(--space-xl) var(--space-md);
+
+    @media (max-width: 48rem) { padding: var(--space-lg) var(--space-sm); }
 }
 
 section {
     margin-bottom: var(--space-xl);
-}
 
-section h2 {
-    font-size: 5.6rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    margin: 0 0 var(--space-lg) 0;
-    border-bottom: 0.4rem solid var(--text-main);
-    padding-bottom: var(--space-md);
+    h2 {
+        font-size: 5.6rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        margin: 0 0 var(--space-lg) 0;
+        border-bottom: 0.4rem solid var(--text-main);
+        padding-bottom: var(--space-md);
+
+        @media (max-width: 48rem) { font-size: 3.2rem; }
+    }
 }
 
 hr {
@@ -139,86 +153,46 @@ hr {
     margin: var(--space-xl) 0;
 }
 
-/* Grid System with Container Queries */
+/* Grid & Cards */
 .meetup-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(34rem, 1fr));
     gap: var(--space-md);
 }
 
-/* Meetup Cards */
 .meetup-card {
     background: var(--bg-main);
-    border: 0.1rem solid rgba(0, 0, 0, 0.1);
+    border: 0.1rem solid rgb(0 0 0 / 0.1);
     border-radius: 0.8rem;
-    box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.07);
+    box-shadow: 0 0.2rem 1.2rem rgb(0 0 0 / 0.07);
     padding: var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
     container-type: inline-size;
-}
 
-.meetup-card time {
-    font-weight: 900;
-    color: var(--brand-java-blue-dark);
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-variant-numeric: tabular-nums;
-}
-
-.meetup-card h3 {
-    font-size: 2.4rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin: 0;
-    letter-spacing: -0.02em;
-}
-
-.meetup-card p {
-    margin: 0;
-    color: var(--text-muted);
-    font-size: 1.6rem;
-}
-
-/* Container Query: scale up h3 on wider cards */
-@container (min-width: 50rem) {
-    .meetup-card h3 {
-        font-size: 4rem;
-    }
-}
-
-/* Responsive */
-
-@media (max-width: 48rem) {
-    body {
-        padding: var(--space-sm);
+    time {
+        font-weight: 900;
+        color: var(--brand-java-blue-dark);
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-variant-numeric: tabular-nums;
     }
 
-    main {
-        padding: var(--space-lg) var(--space-sm);
+    h3 {
+        font-size: 2.4rem;
+        font-weight: 900;
+        line-height: 1.1;
+        margin: 0;
+        letter-spacing: -0.02em;
+
+        @container (min-width: 50rem) { font-size: 4rem; }
     }
 
-    .container {
-        padding: 0 var(--space-sm);
-    }
-
-    section h2 {
-        font-size: 3.2rem;
-    }
-
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-sm);
-    }
-
-
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    nav a {
-        transition: color 0.15s ease;
+    p {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 1.6rem;
     }
 }

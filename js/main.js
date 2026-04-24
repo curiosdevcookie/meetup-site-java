@@ -12,7 +12,7 @@ const today = new Date().toISOString().split('T')[0];
 
 const formatDate = dateStr =>
     new Date(`${dateStr}T00:00:00`).toLocaleDateString('en-US', {
-        weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
+        weekday: 'long', month: 'long', day: 'numeric'
     });
 
 const renderCard = ({ date, time, title, speaker }) => `
@@ -23,11 +23,25 @@ const renderCard = ({ date, time, title, speaker }) => `
         <p>${speaker}</p>
     </article>`;
 
-const renderSection = (id, cards, fallback = '') =>
-    document.getElementById(id).innerHTML = cards.map(renderCard).join('') || fallback;
+const groupByYear = events =>
+    events.reduce((groups, event) => {
+        const year = event.date.slice(0, 4);
+        return { ...groups, [year]: [...(groups[year] ?? []), event] };
+    }, {});
+
+const renderYearGroups = events =>
+    Object.entries(groupByYear(events))
+        .sort(([a], [b]) => b - a)
+        .map(([year, group]) => `
+            <h3>${year}</h3>
+            <div class="meetup-grid">${group.map(renderCard).join('')}</div>
+        `).join('');
 
 const upcoming = events.filter(e => e.date >= today);
 const past     = events.filter(e => e.date <  today).toReversed();
 
-renderSection('upcoming-container', upcoming, '<p>No upcoming events.</p>');
-renderSection('past-container', past);
+document.getElementById('upcoming-container').innerHTML =
+    upcoming.length ? renderYearGroups(upcoming) : '<p>No upcoming events.</p>';
+
+document.getElementById('past-container').innerHTML =
+    renderYearGroups(past);

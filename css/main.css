@@ -84,15 +84,17 @@ header {
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     gap: var(--space-md);
 
     .logo {
-        font-size: var(--font-size-lg);
-        font-weight: 900;
-        color: var(--text-main);
-        text-transform: uppercase;
-        letter-spacing: -0.05em;
+        display: flex;
+        align-items: center;
+
+        img {
+            height: clamp(3rem, 12vw, 19rem);
+            width: auto;
+        }
     }
 
     ul {

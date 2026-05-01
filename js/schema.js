@@ -12,7 +12,9 @@ if (upcoming.length) {
                 endDate:   `${e.date}T${e.time.split('–')[1]}`,
                 eventStatus: 'https://schema.org/EventScheduled',
                 organizer: { '@type': 'Organization', name: 'JUG Colonia' },
-                performer: { '@type': 'Person', name: e.speaker },
+                ...(e.speaker && e.speaker.toLowerCase() !== 'tba'
+                    ? { performer: { '@type': 'Person', name: e.speaker } }
+                    : {}),
             },
         })),
     };

@@ -9,9 +9,9 @@
     /* Brand Colors Java, cf. https://www.oracle.com/a/ocom/docs/java-licensing-logo-guidelines-1908204.pdf */
     --brand-java-blue-dark: #007396;
     --brand-java-orange: #ED8B00;
-    --text-main: #3a3a3a;
-    --text-muted: #000000;
-    --bg-main: #ffffff;
+    --color-ink: #3a3a3a;
+    --color-ink-deep: #000000;
+    --color-sheet: #ffffff;
 
     /* Spacing Scale */
     --space-xxs: 0.1rem;
@@ -45,7 +45,7 @@
     position: absolute;
     top: -100%;
     left: var(--space-sm);
-    background: var(--text-main);
+    background: var(--color-ink);
     color: white;
     padding: var(--space-xs) var(--space-sm);
     font-weight: 700;
@@ -62,12 +62,12 @@ body {
     font-size: var(--font-size-sm);
     line-height: 1.6;
     font-family: 'JetBrains Mono', monospace;
-    color: var(--text-main);
-    background-color: var(--text-main);
+    color: var(--color-ink);
+    background-color: var(--color-ink);
 }
 
 .page-sheet {
-    background: var(--bg-main);
+    background: var(--color-sheet);
     border-radius: 1.2rem;
     overflow: hidden;
     max-width: 120rem;
@@ -116,8 +116,8 @@ nav {
         padding: clamp(var(--space-xxs), 0.5vw, var(--space-xs)) clamp(var(--space-xs), 1.5vw, var(--space-sm));
 
         &:hover {
-            color: var(--text-main);
-            border-color: var(--text-main);
+            color: var(--color-ink);
+            border-color: var(--color-ink);
         }
 
         @media (prefers-reduced-motion: no-preference) {
@@ -156,14 +156,16 @@ section {
     margin-bottom: var(--space-xl);
 
     h2 {
-        font-size: clamp(var(--font-size-lg), 5vw, var(--font-size-xl));
+        font-size: var(--font-size-xl);
         font-weight: 400;
         text-transform: uppercase;
         letter-spacing: -0.03em;
         line-height: 1;
         margin: 0 0 var(--space-lg) 0;
-        border-bottom: 0.4rem solid var(--text-main);
+        border-bottom: 0.4rem solid var(--color-ink);
         padding-bottom: var(--space-md);
+
+        @media (max-width: 48rem) { font-size: var(--font-size-lg); }
     }
 }
 
@@ -178,7 +180,7 @@ section {
 }
 
 .meetup-card {
-    background: var(--bg-main);
+    background: var(--color-sheet);
     border: 0.1rem solid rgb(0 0 0 / 0.1);
     border-radius: 0.8rem;
     box-shadow: 0 0.2rem 1.2rem rgb(0 0 0 / 0.07);
@@ -209,7 +211,7 @@ section {
 
     p {
         margin: 0;
-        color: var(--text-muted);
+        color: var(--color-ink-deep);
         font-size: var(--font-size-sm);
     }
 }

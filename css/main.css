@@ -9,10 +9,9 @@
     /* Brand Colors Java, cf. https://www.oracle.com/a/ocom/docs/java-licensing-logo-guidelines-1908204.pdf */
     --brand-java-blue-dark: #007396;
     --brand-java-orange: #ED8B00;
-    --brand-inspired-gold: #e0b43b;
-    --text-main: #3a3a3a;
-    --text-muted: #555555;
-    --bg-main: #ffffff;
+    --color-ink: #3a3a3a;
+    --color-ink-deep: #000000;
+    --color-sheet: #ffffff;
 
     /* Spacing Scale */
     --space-xxs: 0.1rem;
@@ -22,10 +21,19 @@
     --space-lg: 6.4rem;
     --space-xl: 9.6rem;
 
+    /* Thickness Scale */
+    --thickness-1: 0.1rem;
+    --thickness-2: 0.2rem;
+    --thickness-3: 0.3rem;
+    --thickness-4: 0.4rem;
+    --thickness-5: 0.5rem;
+
     /* Font Sizes */
-     --font-size-sm: 1.8rem;
-     --font-size-lg: 2.4rem;
-     --font-size-xl: 4rem;
+    --font-size-xxs: 1.2rem;
+    --font-size-xs: 1.4rem;
+    --font-size-sm: 1.8rem;
+    --font-size-lg: 2.4rem;
+    --font-size-xl: 4rem;
 }
 
 *, *::before, *::after {
@@ -37,7 +45,7 @@
     position: absolute;
     top: -100%;
     left: var(--space-sm);
-    background: var(--text-main);
+    background: var(--color-ink);
     color: white;
     padding: var(--space-xs) var(--space-sm);
     font-weight: 700;
@@ -49,19 +57,17 @@
 
 body {
     margin: 0;
-    padding: var(--space-md);
+    padding: clamp(var(--space-sm), 4vw, var(--space-md));
     min-height: 100vh;
     font-size: var(--font-size-sm);
     line-height: 1.6;
-    font-family: system-ui, -apple-system, sans-serif;
-    color: var(--text-main);
-    background-color: var(--brand-inspired-gold);
-
-    @media (max-width: 48rem) { padding: var(--space-sm); }
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--color-ink);
+    background-color: var(--color-ink);
 }
 
 .page-sheet {
-    background: var(--bg-main);
+    background: var(--color-sheet);
     border-radius: 1.2rem;
     overflow: hidden;
     max-width: 120rem;
@@ -71,52 +77,66 @@ body {
 .container {
     max-width: 120rem;
     margin: 0 auto;
-    padding: 0 var(--space-md);
-
-    @media (max-width: 48rem) { padding: 0 var(--space-sm); }
+    padding: 0 clamp(var(--space-sm), 4vw, var(--space-md));
 }
 
 /* Navigation */
 header {
-    padding: var(--space-lg) 0;
+    padding: clamp(var(--space-md), 6vw, var(--space-lg)) 0;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    gap: var(--space-md);
+    align-items: center;
+    gap: clamp(var(--space-sm), 3vw, var(--space-md));
 
     .logo {
-        font-size: var(--font-size-lg);
-        font-weight: 900;
-        color: var(--text-main);
-        text-transform: uppercase;
-        letter-spacing: -0.05em;
+        display: flex;
+        align-items: center;
+
+        img {
+            height: clamp(3rem, 12vw, 19rem);
+            width: auto;
+        }
     }
 
     ul {
         display: flex;
         list-style: none;
-        gap: var(--space-md);
+        gap: clamp(var(--space-sm), 2vw, var(--space-lg));
         margin: 0;
         padding: 0;
     }
 
+    li a {
+        border: var(--thickness-3) solid var(--brand-java-blue-dark);
+        border-radius: var(--space-md);
+        font-size: clamp(var(--font-size-sm), 2vw, var(--font-size-lg));
+        padding: clamp(var(--space-xxs), 0.5vw, var(--space-xs)) clamp(var(--space-xs), 1.5vw, var(--space-sm));
+
+        &:hover {
+            color: var(--color-ink);
+            border-color: var(--color-ink);
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            transition: color 0.15s ease, border-color 0.15s ease;
+        }
+    }
+
     a {
-        color: var(--text-main);
+        color: var(--brand-java-blue-dark);
         text-decoration: none;
         font-weight: 700;
-        font-size: var(--font-size-lg);
         text-transform: uppercase;
-        letter-spacing: 0.1em;
 
         &:hover { color: var(--brand-java-blue-dark); }
 
         &:focus-visible {
-            outline: 0.3rem solid var(--brand-inspired-gold);
-            outline-offset: 0.4rem;
-            border-radius: 0.2rem;
+            outline: var(--thickness-4) solid var(--brand-java-orange);
+            outline-offset: var(--space-xs);
+            border-radius: var(--space-xs)
         }
 
         @media (prefers-reduced-motion: no-preference) {
@@ -124,18 +144,12 @@ nav {
         }
     }
 
-    @media (max-width: 48rem) {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-sm);
-    }
+
 }
 
 /* Main Content */
 main {
-    padding: var(--space-xl) var(--space-md);
-
-    @media (max-width: 48rem) { padding: var(--space-lg) var(--space-sm); }
+    padding: clamp(var(--space-lg), 8vw, var(--space-xl)) clamp(var(--space-sm), 4vw, var(--space-md));
 }
 
 section {
@@ -143,12 +157,12 @@ section {
 
     h2 {
         font-size: var(--font-size-xl);
-        font-weight: 900;
+        font-weight: 400;
         text-transform: uppercase;
         letter-spacing: -0.03em;
         line-height: 1;
         margin: 0 0 var(--space-lg) 0;
-        border-bottom: 0.4rem solid var(--text-main);
+        border-bottom: 0.4rem solid var(--color-ink);
         padding-bottom: var(--space-md);
 
         @media (max-width: 48rem) { font-size: var(--font-size-lg); }
@@ -166,7 +180,7 @@ section {
 }
 
 .meetup-card {
-    background: var(--bg-main);
+    background: var(--color-sheet);
     border: 0.1rem solid rgb(0 0 0 / 0.1);
     border-radius: 0.8rem;
     box-shadow: 0 0.2rem 1.2rem rgb(0 0 0 / 0.07);
@@ -192,12 +206,12 @@ section {
         margin: 0;
         letter-spacing: calc(-1 * var(--space-xxs));
 
-        @container meetup-grid (max-width: 71rem) { font-size: var(--font-size-xl); }
+        @container meetup-grid (max-width: 71rem) { font-size: var(--font-size-lg); }
     }
 
     p {
         margin: 0;
-        color: var(--text-muted);
+        color: var(--color-ink-deep);
         font-size: var(--font-size-sm);
     }
 }
